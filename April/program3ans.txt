@@ -1,0 +1,20 @@
+1.create table librarians(librarianid  int primary key auto_increment,name varchar(50) NOT NULL,email varchar(100) unique NOT NULL,phone varchar(10) unique NOT NULL);
+
+2.alter table bookissues add column librarianid int;
+  alter table bookissues add constraint book_issues_fkey_libraianid foreign key(librarianid) references librarians(librarianid);
+
+3.insert into librarians values(1,"John Smith","john.smith@example.com",9876543210);
+  insert into librarians values(2,"Emma Brown","emma.brown@example.com",8765432109);
+  insert into librarians values(3, "David Wilson", "david.wilson@example.com", 7654321098);
+  insert into librarians values(4, "Franklin", "franklin@example.com", 3445236778);
+  
+ 4.update bookissues set librarianid=1 where bookid in(1,2);
+   update bookissues set librarianid=1 where bookid in(3,4);
+    update bookissues set librarianid=1 where bookid in(5,6);
+    
+ 5.select students.name,title,librarians.name from books natural join bookissues natural join students join librarians on librarians.librarianid=bookissues.librarianid;
+ 
+ 6.select librarians.librarianid,name,count(bookid) from librarians left join bookissues on bookissues.librarianid = librarians.librarianid group by librarianid;
+ 
+ 7.select librarians.librarianid,name,count(bookid) from librarians left join bookissues on bookissues.librarianid = librarians.librarianid group by librarianid having count(bookid) = 0;
+

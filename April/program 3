@@ -1,0 +1,30 @@
+In continuation with the Practice Question - I and II do the following modification in the database:
+
+Questions:
+
+1. Create a table "librarians" with the following structure:  
+   - librarianid (integer, Primary Key, auto increment)  
+   - name (varchar(50), Cannot be NULL)
+   - email (varchar(100), unique, not null)
+   - phone (varchar(10), unique, not null)
+
+2. Alter table "bookissues" table to:
+   - Add a column "librarianid" of type integer. 
+   - Add a foreign key constraint to refer the "librarianid" attribute to "librarians" table.
+
+3. Insert the following records into the "librarians" table:
+
+   - (1, John Smith, john.smith@example.com, 9876543210)
+   - (2, Emma Brown, emma.brown@example.com, 8765432109)
+   - (3, David Wilson, david.wilson@example.com, 7654321098)
+   - (4, Franklin, franklin@example.com, 3445236778)
+
+4. Update the "bookissues" table with the following Librarian data:
+   - The librarianid value for books with bookid 101 and 102 should be 1
+   - The librarianid value for books with bookid 103 and 104 should be 1
+   - The librarianid value for books with bookid 105 and 106 should be 1
+
+5. List all book issues with student and librarian details (include attributes studend name, title, librarian name)
+6. Count the number of books issued by each librarian (include attributes librarianid, name, total_books_issued)
+7. Find librarians who have not issued any books (include attributes librarianid, name)
+
