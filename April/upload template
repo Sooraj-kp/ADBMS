@@ -1,0 +1,67 @@
+-- 
+-- Roll No: 56
+-- Name: SOORAJ K P
+-- Program: Assignment 1
+-- 
+
+
+--
+-- Table structure for table books
+--
+
+create table books(accno int primary key auto_increment,title varchar(100) UNIQUE NOT NULL,author varchar(50) NOT NULL,price FLOAT(6,2),type ENUM('lending','reference'),availability ENUM ('yes','no'),publisherid int);
+
+alter table books add constraint fk_publisherid foreign key (publisherid ) references publishers(publisherid );
+
+
+--
+-- Table structure for table publishers
+--
+
+create table publishers(publisherid int auto_increment primary key,name varchar(50) UNIQUE NOT NULL,address varchar(100));
+
+
+--
+-- Table structure for table members
+--
+
+create table members(memberid int  auto_increment primary key,name varchar(50) NOT NULL, address varchar(100),type ENUM ('staff','student'));
+
+
+--
+-- Table structure for table issues
+--
+
+create table issues(issueid int auto_increment primary key,memberid int,accno int,issuedate date,duedate date);
+
+alter table issues add constraint fk_accno foreign key (accno) references books(accno);
+
+alter table issues add constraint fk_memberid foreign key (memberid) references members(memberid);
+
+
+--
+-- Table structure for table returns
+--
+
+create table returns(returnid int auto_increment primary key,memberid int,accno int,returndate date,fine int default 0 check (fine>=0));
+
+alter table returns add constraint fk_rmemberid foreign key (memberid) references members(memberid);
+
+alter table returns add constraint fk_raccno foreign key (accno) references books(accno);
+
+
+
+
+--
+-- Dumping data for table <table_name>
+--
+
+-- --------insert/update statement commands----------- # This line may be removed in the actcual file
+
+--
+-- SQl Query Statements
+--
+
+-- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
+-- -----Question number should be commented---------------#This line may be removed in the actual file
+
