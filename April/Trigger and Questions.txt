@@ -1,0 +1,23 @@
+1. create function bookprice(a int) RETURNS float(6,2) DETERMINISTIC return(select price from books where accno=a);
+    -> //
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> select bookprice(2)//
++--------------+
+| bookprice(2) |
++--------------+
+|       199.99 |
++--------------+
+1 row in set (0.00 sec)
+.......................................................................................................................................................................
+
+2.  create function totalfine() RETURNS int DETERMINISTIC return(select sum(fine) from returns)//
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select totalfine()//
++-------------+
+| totalfine() |
++-------------+
+|          35 |
++-------------+
+.........................................................................................................................................................................
